@@ -52,6 +52,8 @@ class Life():
         self.print_border()
     
     def check_neighbors(self, x, y):
+        # Takes a given cell and counts how many of its neighbors are alive
+
         living_neighbor_count = 0
         row_index = x 
 
@@ -73,6 +75,9 @@ class Life():
         return living_neighbor_count
     
     def copy_board(self):
+        # Creates a new 2D list to store board state, because if you just try to assign board state to a variable and 
+        # then make changes to that variable it also overwrites board state.
+
         new_board = [[]] * self.height
         for i in range(self.height):
             new_board[i] = [0] * self.width 
@@ -90,6 +95,7 @@ class Life():
         # Any dead cell with exactly 3 neighbors becomes alive, due to reproduction
         
         new_state_board = self.copy_board()
+        # Write all changes safely to a copy so that we do not overwrite board state during the checking process
         
         for i in range(self.height):
             for j in range(self.width):
@@ -119,7 +125,7 @@ class Life():
 
 
 x = Life()
-x.set_board_size(100, 100)
+x.set_board_size(50, 200)
 x.random_state()
 # x.board = [[1, 0, 1], [0, 0, 0], [1, 0, 0]]
 
